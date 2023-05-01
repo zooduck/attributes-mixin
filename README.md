@@ -48,19 +48,19 @@ class WebComponent extends attributesMixin(HTMLElement) {
     { contentName: 'non-reflecting-attribute' },
     { idlName: 'reflectingAttribute', contentName: 'reflecting-attribute' },
     { idlName: 'readonlyAttribute', readonly: true, defaultValue: 'bananas' }
-  ];
+  ]
   constructor() {
-    super();
+    super()
   }
   attributeChangedCallback(attributeName, oldValue, newValue) {
-    console.log(attributeName, oldValue, newValue);
+    console.log(attributeName, oldValue, newValue)
   }
 }
-customElements.define('web-component', WebComponent);
+customElements.define('web-component', WebComponent)
 
-const webComponent = document.createElement('web-component');
+const webComponent = document.createElement('web-component')
 
-webComponent.nonReflectingAttribute; // null
+webComponent.nonReflectingAttribute // null
 webComponent.nonReflectingAttribute = 'bananas'
 // console.log >> 'nonReflectingAttribute', null, 'bananas'
 webComponent.nonReflectingAttribute // 'bananas'
@@ -79,7 +79,7 @@ webComponent.setAttribute('reflecting-attribute', 'pyjamas')
 // console.log >> 'reflecting-attribute', 'bananas', 'pyjamas'
 webComponent.reflectingAttribute // 'pyjamas'
 
-webComponent.readonlyAttribute; // 'readonlyAttribute'
+webComponent.readonlyAttribute // 'readonlyAttribute'
 webComponent.readonlyAttribute = 'bananas'
-webComponent.readonlyAttribute; // 'readonlyAttribute'
+webComponent.readonlyAttribute // 'readonlyAttribute'
 ```
